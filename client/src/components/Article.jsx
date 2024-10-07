@@ -6,26 +6,62 @@ import Axios from "axios";
 const Article = () => {
   const { id } = useParams();
   const { news } = UserNews();
+  const [content, setContent] = useState("");
   const article = news[id];
 
+  useEffect(() => {
+    const fetchContent = async () => {
+      const res = await Axios.post("http://localhost:8000/getContent", {
+        news_url: article.url,
+      });
+
+      console.log(res);
+      setContent(res.data.content);
+    };
+
+    if (article && content === "") fetchContent();
+  }, [article]);
+
   return (
-    <div className="p-4">
+    <div className="flex justify-between">
       {article ? (
-        <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h1 className="text-2xl font-bold mb-4">{article.title}</h1>
-          <p className="text-gray-700 mb-4">{article.content}</p>
-          <a
-            href={article.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500"
-          >
-            Read full article here
-          </a>
+        <div className="w-full py-10 px-20">
+          <div className="flex justify-between place-items-center mb-10">
+            <h1 className="w-[80%] text-3xl font-bold">{article.title}</h1>
+            <h1 className="w-[20%]  text-right text-xl text-gray-600">
+              By {article.source.name}
+            </h1>
+          </div>
+          <div>
+            <img
+              className="rounded-md w-3/5 mx-auto"
+              src={article.urlToImage}
+              alt={article.title}
+            />
+          </div>
+          <div className="mt-10 text-lg text-justify text-gray-800 leading-relaxed space-y-4">
+            {content
+              ?.split("\n")
+              .map(
+                (line, index) =>
+                  line.trim() !== "" && <p key={index}>{`${line}\n`}</p>
+              )}
+          </div>
+          <div className="block text-right mt-10 text-lg">
+            <a
+              href={article.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 underline"
+            >
+              Read full article here
+            </a>
+          </div>
         </div>
       ) : (
         <p>Article not found</p>
       )}
+      <div className="w-[30%] bg-slate-300">AI integration Here</div>
     </div>
   );
 };
