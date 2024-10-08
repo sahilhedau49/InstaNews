@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserNews } from "../context/news";
 import Axios from "axios";
+import AIContorls from "./AIContorls";
 
 const Article = () => {
   const { id } = useParams();
@@ -61,7 +62,9 @@ const Article = () => {
       ) : (
         <p>Article not found</p>
       )}
-      <div className="w-[30%] bg-slate-300">AI integration Here</div>
+      <div className="w-[30%] bg-slate-300">
+        <AIContorls content={content} />
+      </div>
     </div>
   );
 };
