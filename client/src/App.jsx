@@ -15,7 +15,10 @@ function App() {
     <BrowserRouter>
       <AuthContextProvider>
         <NewsContextProvider>
-          <Navbar />
+          <div className="sticky top-0 bg-white">
+            {" "}
+            <Navbar />
+          </div>
           <Routes>
             <Route
               path="/signup"

@@ -23,7 +23,7 @@ const Navbar = () => {
     <div>
       <div className="flex border-b-2 border-black px-20 py-4 justify-between">
         <Link to={"/"}>
-          <img src={Logo} alt="InstaNews Logo" className="w-36" />
+          <img src={Logo} alt="InstaNews Logo" className="w-24" />
         </Link>
         <div className="flex gap-10 place-items-center">
           {user && user.email && (

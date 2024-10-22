@@ -62,7 +62,7 @@ const Article = () => {
       ) : (
         <p>Article not found</p>
       )}
-      <div className="w-[30%] bg-slate-300">
+      <div className="w-[30%]">
         <AIContorls content={content} />
       </div>
     </div>

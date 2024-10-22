@@ -26,7 +26,7 @@ app.post("/summarize/bart-large-cnn", (req, res) => {
       res.send(response);
     })
     .catch((error) => {
-      console.log(error.message);
+      console.log(error);
     });
 });
 
