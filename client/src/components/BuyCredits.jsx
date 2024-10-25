@@ -17,16 +17,15 @@ const BuyCredits = () => {
 
       const snapshot = await get(userRef);
       if (snapshot.exists()) {
-        const currentCredits = snapshot.val();
+        const cc = snapshot.val();
+        console.log(snapshot.val());
+        const ori =
+          purchasedCredits + (typeof cc === "number" ? cc : cc?.credits);
         await update(ref(db, `users/${username}`), {
-          credits: currentCredits + purchasedCredits,
+          credits: ori,
         });
 
-        console.log(
-          `Credits updated successfully. New balance: ${
-            currentCredits + purchasedCredits
-          }`
-        );
+        console.log(`Credits updated successfully. New balance: ${ori}`);
       } else {
         console.log("User not found.");
       }

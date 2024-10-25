@@ -91,7 +91,7 @@ app.post("/create-checkout-session", async (req, res) => {
     phone_number_collection: {
       enabled: true,
     },
-    success_url: `${process.env.DOMAIN_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${process.env.DOMAIN_URL}/success`,
     cancel_url: `${process.env.DOMAIN_URL}/cancel`,
   });
 

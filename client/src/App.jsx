@@ -10,6 +10,8 @@ import Home from "./components/Home";
 import Article from "./components/Article";
 import { NewsContextProvider } from "./context/news";
 import BuyCredits from "./components/BuyCredits";
+import Success from "./components/Success";
+import Cancel from "./components/Cancel";
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/article/:id" element={<Article />} />
             <Route path="/buyCredits" element={<BuyCredits />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/cancel" element={<Cancel />} />
           </Routes>
         </NewsContextProvider>
       </AuthContextProvider>
