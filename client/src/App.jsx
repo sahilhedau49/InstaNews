@@ -9,14 +9,14 @@ import ProtectedSignup from "./components/ProtectedSignup";
 import Home from "./components/Home";
 import Article from "./components/Article";
 import { NewsContextProvider } from "./context/news";
+import BuyCredits from "./components/BuyCredits";
 
 function App() {
   return (
     <BrowserRouter>
       <AuthContextProvider>
         <NewsContextProvider>
-          <div className="sticky top-0 bg-white">
-            {" "}
+          <div className="bg-white">
             <Navbar />
           </div>
           <Routes>
@@ -40,6 +40,7 @@ function App() {
 
             <Route path="/" element={<Home />} />
             <Route path="/article/:id" element={<Article />} />
+            <Route path="/buyCredits" element={<BuyCredits />} />
           </Routes>
         </NewsContextProvider>
       </AuthContextProvider>

@@ -7,7 +7,7 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import { createContext, useContext, useState, useEffect } from "react";
-import { auth } from "../Firebase";
+import { auth, db } from "../Firebase";
 
 export const AuthContext = createContext();
 
@@ -27,6 +27,7 @@ export const AuthContextProvider = ({ children }) => {
         sendEmailVerification(auth.currentUser).then(() => {
           setVeriMsg(true);
         });
+        // create firestore doc here. and set watchlist empty and credits to 10.
       })
       .catch((error) => {
         console.log(error);

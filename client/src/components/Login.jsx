@@ -41,7 +41,8 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="relative overflow-y-hidden min-h-[90vh] flex mt-6 place-content-center">
+    <div className="relative overflow-y-hidden min-h-[90vh] flex mt-10 flex-col">
+      <h1 className="text-3xl font-semibold text-center">Log in</h1>
       <form>
         <div className="hero">
           <div className="hero-content flex-col md:w-screen md:px-4">

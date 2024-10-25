@@ -26,7 +26,7 @@ const Article = () => {
   return (
     <div className="flex justify-between">
       {article ? (
-        <div className="w-full py-10 px-20">
+        <div className="w-full bg-slate-200 py-10 px-20">
           <div className="flex justify-between place-items-center mb-10">
             <h1 className="w-[80%] text-3xl font-bold">{article.title}</h1>
             <h1 className="w-[20%]  text-right text-xl text-gray-600">
@@ -62,7 +62,7 @@ const Article = () => {
       ) : (
         <p>Article not found</p>
       )}
-      <div className="w-[30%]">
+      <div className="w-[40%]">
         <AIContorls content={content} />
       </div>
     </div>

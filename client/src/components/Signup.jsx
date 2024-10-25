@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { UserAuth } from "../context/auth";
 import { Link } from "react-router-dom";
 import ErrorSign from "./ErrorSign";
+import { ref, set } from "firebase/database";
+import { db } from "../Firebase";
 
 const Signup = () => {
   const [data, setData] = useState({ email: "", password: "" });
@@ -19,13 +21,17 @@ const Signup = () => {
     e.preventDefault();
     try {
       await emailSignIn(data.email, data.password);
+
+      const userRef = ref(db, `users/${data.email.split("@")[0]}/credits`);
+      await set(userRef, 10);
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <div className="overflow-y-hidden min-h-[90vh] mt-6 flex place-content-center">
+    <div className="overflow-y-hidden min-h-[90vh] flex flex-col mt-10">
+      <h1 className="text-3xl text-center font-semibold">Sign Up</h1>
       <form>
         <div className="hero">
           <div className="hero-content flex-col md:w-screen md:px-4">
