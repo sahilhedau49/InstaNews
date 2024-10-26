@@ -58,6 +58,13 @@ const Navbar = () => {
             Fake News Checker
           </a>
 
+          <Link
+            className="text-lg font-semibold duration-200"
+            to={"/customSummary"}
+          >
+            Custom Summarizer
+          </Link>
+
           {user && user.email && (
             <div>
               <button

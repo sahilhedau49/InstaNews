@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const summarizeTextUsingBart = require("./utils/bart_summarizer.js");
 const summarizeTextUsingDistilBart = require("./utils/distilbart_summarizer.js");
+const summarizeUsingApyhub = require("./utils/apyhub.js");
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 const axios = require("axios");
 const { JSDOM } = require("jsdom");
@@ -40,6 +41,18 @@ app.post("/summarize/distilbart-cnn-12-6", (req, res) => {
     })
     .catch((error) => {
       console.log(error.message);
+    });
+});
+
+app.post("/summarize/apyhub", (req, res) => {
+  const text = req.body.text_to_summarize;
+
+  summarizeUsingApyhub(text)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((error) => {
+      console.log(error);
     });
 });
 

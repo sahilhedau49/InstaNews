@@ -117,6 +117,7 @@ const AIContorls = ({ content }) => {
           >
             <option value="bart-large-cnn">Bart Large CNN</option>
             <option value="distilbart-cnn-12-6">Distilbart CNN 12-6</option>
+            <option value="apyhub">Apyhub</option>
           </select>
           <button
             onClick={generateSummary}
